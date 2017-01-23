@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ui-date-picker{
+            width:240px;
+            border:1px solid #ccc;
+            font-size:14px;
+            font-family:Serif,cursive,fantasy
+        }
+        .ui-date-picker > .header{
+            height:30px;
+            line-height:30px;
+            text-align:center;
+            background-color:#CA2B2B;
+            color:#fff;
+        }
+        .ui-date-picker .caret-left{
+            display:block;
+            float:left;
+            margin-left: 10px;
+            margin-top: 6px;
+            border-right: 7px solid #fff;
+            border-top:7px solid transparent;
+            border-bottom: 7px solid transparent;
+            width:0;
+            height: 0;
+            cursor:pointer;
+        }
+        .ui-date-picker .caret-right{
+            display:block;
+            float:right;
+            margin-right: 10px;
+            margin-top: 6px;
+            border-left: 7px solid #fff;
+            border-top:7px solid transparent;
+            border-bottom: 7px solid transparent;
+            width:0;
+            height: 0;
+            cursor:pointer;
+        }
+        .ui-date-picker .panel{
+            width:100%;
+            text-align:center;
+        }
+        .ui-date-picker .panel th{
+            line-height:2;
+        }
+        .ui-date-picker .panel td{
+            line-height: 1.2;
+        }
+        .ui-date-picker .pre-month,
+        .ui-date-picker .next-month{
+            color:#eee;
+        }
+        .ui-date-picker .cur-month{
+            cursor:pointer;
+        }
+        .ui-date-picker .cur-month:hover{
+            background-color:#ccc;
+            color:#fff;
+        }
+        .ui-date-picker .cur-date{
+            color:#CA2B2B;
+        }
+    </style>
+    <script src="../scripts/lib/jquery-3.1.1.js"></script>
+    <script>
+        function DatePick($target) {
+            this.init($target);
+            this.render();
+            this.bind();
+        }
+        DatePick.propotype={
+            init:function($target){
+                this.date=new Date();
+                this.$target=$target;
+            },
+            render:function(){
+                var tpl='<div class="ui-date-picker" style="display:none">'
+                      + '<div class="header"><span class="pre caret-left"></span><span class="header-date">2016年7月</span><span class="next caret-right"></span></div>'
+                      + '<table class="panel">'
+                      +      '<thead><tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr></thead>'
+                      +      '<tbody></tbody>'
+                      + '</div>';
+                this.$datepicker=$(tpl);
+                $('body').append(this.$datepicker);
+            },
+            bind:function(){
+
+            }
+        }
+        var datepick=new DatePick($("#date-star"));
+    </script>
+</head>
+<body>
+   <input id="date-start" type="text" placeholder="起始日期"/>
+    <!--<div class="ui-date-picker">-->
+        <!--<div class="header">-->
+            <!--<span class="pre caret-left"></span>-->
+            <!--<span class="header-date">2016年7月</span>-->
+            <!--<span class="next caret-right"></span>-->
+        <!--</div>-->
+        <!--<table class="panel">-->
+            <!--<thead>-->
+               <!--<tr>-->
+                   <!--<th>日</th>-->
+                   <!--<th>一</th>-->
+                   <!--<th>二</th>-->
+                   <!--<th>三</th>-->
+                   <!--<th>四</th>-->
+                   <!--<th>五</th>-->
+                   <!--<th>六</th>-->
+               <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+               <!--<tr>-->
+                   <!--<td class="pre-month">28</td>-->
+                   <!--<td class="pre-month">29</td>-->
+                   <!--<td class="pre-month">30</td>-->
+                   <!--<td class="pre-month">31</td>-->
+                   <!--<td class="cur-month cur-date">01</td>-->
+                   <!--<td class="cur-month">02</td>-->
+                   <!--<td class="cur-month">03</td>-->
+               <!--</tr>-->
+               <!--<tr>-->
+                   <!--<td class="cur-month">05</td>-->
+                   <!--<td class="cur-month">05</td>-->
+                   <!--<td class="cur-month">06</td>-->
+                   <!--<td class="cur-month">07</td>-->
+                   <!--<td class="cur-month">08</td>-->
+                   <!--<td class="cur-month">09</td>-->
+                   <!--<td class="cur-month">10</td>-->
+               <!--</tr>-->
+               <!--<tr>-->
+                   <!--<td class="cur-month">11</td>-->
+                   <!--<td class="cur-month">12</td>-->
+                   <!--<td class="cur-month">13</td>-->
+                   <!--<td class="cur-month">14</td>-->
+                   <!--<td class="cur-month">14</td>-->
+                   <!--<td class="cur-month">16</td>-->
+                   <!--<td class="cur-month">17</td>-->
+               <!--</tr>-->
+               <!--<tr>-->
+                   <!--<td class="cur-month">18</td>-->
+                   <!--<td class="cur-month">19</td>-->
+                   <!--<td class="cur-month">20</td>-->
+                   <!--<td class="cur-month">21</td>-->
+                   <!--<td class="cur-month">22</td>-->
+                   <!--<td class="cur-month">23</td>-->
+                   <!--<td class="cur-month">24</td>-->
+               <!--</tr>-->
+               <!--<tr>-->
+                   <!--<td class="cur-month">25</td>-->
+                   <!--<td class="cur-month">26</td>-->
+                   <!--<td class="cur-month">27</td>-->
+                   <!--<td class="cur-month">28</td>-->
+                   <!--<td class="cur-month">29</td>-->
+                   <!--<td class="cur-month">30</td>-->
+                   <!--<td class="next-month">01</td>-->
+
+               <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</div>-->
+</body>
+</html>
