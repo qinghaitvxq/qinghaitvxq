@@ -6,7 +6,7 @@ require.config({
         "jquery":"lib/jquery-3.1.1"
     }
 });
-require(['moduleA','jquery'],function(ma,$){
+require(['../requirejsDemo/scripts/moduleA','jquery'],function(ma, $){
        alert(ma.add(5,6));
        console.log('ma');
        console.log(ma.count);
