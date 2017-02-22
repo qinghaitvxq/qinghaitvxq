@@ -7,16 +7,24 @@ section,header,article,nav{
 }
 body{
     margin:1em 10%;
+    background-image:url(../images/background.gif);
     background-attachment: fixed;
     background-position:top left;
+    background-repeat:repeat-x;
     max-width:80em;
 }
 header{
+    background-image:url(../images/guitarist.gif);
+    background-repeat:no-repeat;
+    background-position:bottom right;
     border-width:.1em;
     border-style:solid;
     border-bottom-width:0;
 }
 header nav{
+    background-image:url(../images/navbar.gif);
+    background-positin:bottom left;
+    background-repeat:repeat-x;
     border-width:.1em;
     border-stle:solid;
     border-bottle-width:0;
@@ -45,4 +53,15 @@ article{
     padding:2em 10%;
     line-height:1.8em;
 }
-
+#about header{
+    background-image:url(../images/lineup.gif);
+}
+#photos header{
+    background-image:url(../images/basshead.gif);
+}
+#live header{
+    background-image:url(../images/bassist.gif);
+}
+#contact header{
+    background-image:url(../images/drummer.gif);
+}
