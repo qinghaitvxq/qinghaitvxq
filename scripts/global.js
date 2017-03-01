@@ -176,6 +176,65 @@ function prepareInternalnav() {
     }
 }
 
+
+function preparePlaceholder() {
+    var placeholder=document.createElement('img');
+    placeholder.setAttribute('id','placeholder');
+    placeholder.setAttribute('src','images/placeholder.png');
+    placeholder.setAttribute('alt','my image gallery');
+    var description=document.createElement('p');
+    description.setAttribute('id','description');
+    var desctext=document.createTextNode('Choose an image');
+    description.appendChild(desctext);
+
+    // document.body.appendChild(placeholder);
+    // document.body.appendChild(description);
+
+    var gallery=document.getElementById("imagegallery");
+    insertAfter(placeholder,gallery);
+    insertAfter(description,placeholder);
+
+
+}
+function showPic(whichpic) {
+
+    if(!document.getElementById("placeholder")){
+        return false;
+    }
+    var source=whichpic.getAttribute("href");
+    var placeholder=document.getElementById("placeholder");
+    placeholder.setAttribute("src",source);
+
+    if(document.getElementById("description")){
+        var text=whichpic.getAttribute("title");
+        var description=document.getElementById("description");
+        description.firstChild.nodeValue=text;
+    }
+    return true;
+}
+function prepareGallery() {
+    if(!document.getElementsByName){
+        return false;
+    }
+    if(!document.getElementById){
+        return false;
+    }
+    if(!document.getElementById("imagegallery")){
+        return false;
+    }
+    var gallery=document.getElementById("imagegallery");
+    var links=gallery.getElementsByTagName("a");
+
+    for(var i=0;i<links.length;i++){
+        links[i].onclick=function () {
+            return !showPic(this);
+        }
+        //links[i].onkeypress=links[i].onclick;
+    }
+}
+
 addLoadEvent(highlightPage);
 addLoadEvent(prepareSlideshow);
 addLoadEvent(prepareInternalnav);
+addLoadEvent(preparePlaceholder);
+addLoadEvent(prepareGallery);
